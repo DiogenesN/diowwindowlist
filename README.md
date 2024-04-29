@@ -1,13 +1,14 @@
 # DioWWindowList
-A Wayland application that shows a list of currently opened windows.
+	A Wayland application that shows a list of currently opened windows.
 It was written without any GUI toolkits, using only libwayland.
 Many things like: popup position, color, font, text size, highlight color were hardcoded,
 since i wrote it primarily for myself, if you like it and you want some changes then
 feel free to add any changes you want or email me.
-On opening the application, you will see a small button on the top right edge of the screen.
+	On opening the application, you will see a small button on the top right edge of the screen.
 Clicking on it, a popup window shows up with a list of all currently opened windows.
 Clicking on any window title will activate (raise) the selected window.
 You can also browse the windows by mouse wheel scrolling on the top right button.
+	Right click on the button, terminates the applicatoin.
 It was tested on Debian 12 on Wayfire.
 
 # What you can do with DioWWindowList
@@ -17,48 +18,48 @@ It was tested on Debian 12 on Wayfire.
 
 # Before building
 You need wayland-scanner to generate three header files:
-xdg-shell-client-protocol.h
+	xdg-shell-client-protocol.h
 
-	get the XML file from here:
-	https://cgit.freedesktop.org/wayland/wayland-protocols/plain/stable/xdg-shell/xdg-shell.xml
-	after downloading the file run this command to generate the glue code:
-	wayland-scanner private-code < xdg-shell.xml > xdg-shell-protocol.c
-	and this command to generate the header file:
-	wayland-scanner client-header < xdg-shell.xml > xdg-shell-client-protocol.h
+		get the XML file from here:
+		https://cgit.freedesktop.org/wayland/wayland-protocols/plain/stable/xdg-shell/xdg-shell.xml
+		after downloading the file run this command to generate the glue code:
+		wayland-scanner private-code < xdg-shell.xml > xdg-shell-protocol.c
+		and this command to generate the header file:
+		wayland-scanner client-header < xdg-shell.xml > xdg-shell-client-protocol.h
 
-wlr-layer-shell-unstable-v1-protocol.h
+	wlr-layer-shell-unstable-v1-protocol.h
 
-	get the XML from here:
-	https://raw.githubusercontent.com/swaywm/wlroots/b7dc4f2990d1e6cdba38a7e9d2d286e48dd1a3eb/protocol/wlr-layer-shell-unstable-v1.xml
-	after downloading the file run this command to generate the glue code:
-	wayland-scanner private-code < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell-unstable-v1.c
-	and this command to generate the header file:
-	wayland-scanner client-header < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell-unstable-v1-protocol.h
+		get the XML from here:
+		https://raw.githubusercontent.com/swaywm/wlroots/b7dc4f2990d1e6cdba38a7e9d2d286e48dd1a3eb/protocol/wlr-layer-shell-unstable-v1.xml
+		after downloading the file run this command to generate the glue code:
+		wayland-scanner private-code < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell-unstable-v1.c
+		and this command to generate the header file:
+		wayland-scanner client-header < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell-unstable-v1-protocol.h
 
-wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
+	wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
 
-	get the XML file from here:
-	https://raw.githubusercontent.com/swaywm/wlr-protocols/master/unstable/wlr-foreign-toplevel-management-unstable-v1.xml	after downloading the file run this command to 		generate the glue code:
-	wayland-scanner private-code < wlr-foreign-toplevel-management-unstable-v1.xml > wlr-foreign-toplevel-management-unstable-v1.c
-	and this command to generate the header file:
-	wayland-scanner client-header < wlr-foreign-toplevel-management-unstable-v1.xml > wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
+		get the XML file from here:
+		https://raw.githubusercontent.com/swaywm/wlr-protocols/master/unstable/wlr-foreign-toplevel-management-unstable-v1.xml	after downloading the file run this command to 		generate the glue code:
+		wayland-scanner private-code < wlr-foreign-toplevel-management-unstable-v1.xml > wlr-foreign-toplevel-management-unstable-v1.c
+		and this command to generate the header file:
+		wayland-scanner client-header < wlr-foreign-toplevel-management-unstable-v1.xml > wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
 
-	after generating all those *.c and *.h files, and installing all the required libs,
-	move them to the src/ directory
+		after generating all those *.c and *.h files, and installing all the required libs,
+		move them to the src/ directory
 
-also you need to install the following libs:
+	also you need to install the following libs:
 
-	make
-	pkgconf
- 	librsvg2-dev
-	libcairo2-dev
-	libwayland-dev
+		make
+		pkgconf
+	 	librsvg2-dev
+		libcairo2-dev
+		libwayland-dev
 
-on Debian run the following command:
+	on Debian run the following command:
 
-	sudo apt install libwayland-dev libcairo2-dev librsvg2-dev make
+		sudo apt install libwayland-dev libcairo2-dev librsvg2-dev make
 
-after going through all the above steps, go to the next step in this tutorial.
+	after going through all the above steps, go to the next step in this tutorial.
 
 # Installation/Usage
   1. Open a terminal and run:
@@ -75,6 +76,32 @@ after going through all the above steps, go to the next step in this tutorial.
   3. Run the application:
   
 		 diowwindowlist
+
+# Configuration
+The application creates the following configuration file
+
+		~/.config/diowwindowlist/diowwindowlist.conf
+
+	the content of the configuration file:
+
+		icons_theme=none
+		posx=-7
+		posy=7
+		cut_string_workaround=true
+
+	to have support for icons, add the full path to your icon directory e.g.:
+
+		icons_theme=/usr/share/icons/Lyra-blue-dark
+
+	posx defines the x position of the popup window, on a screen resolution 1920x1080, set it to:
+
+		posx=-1270
+
+	posy defines the upper position of the popup window, on a screen resolution 1920x1080, set it to:
+
+		posy=970
+
+	cut_string_workaround is either true or false, it cuts the long multibyte strings, if it breaks the app then set it to false.
 
 # Screenshots
  
