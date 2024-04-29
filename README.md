@@ -16,8 +16,9 @@ It was tested on Debian 12 on Wayfire.
    3. Browse on mouse wheel scroll.
 
 # Before building
-	You need wayland-scanner to generate three header files:
-	xdg-shell-client-protocol.h
+You need wayland-scanner to generate three header files:
+xdg-shell-client-protocol.h
+
 	get the XML file from here:
 	https://cgit.freedesktop.org/wayland/wayland-protocols/plain/stable/xdg-shell/xdg-shell.xml
 	after downloading the file run this command to generate the glue code:
@@ -25,7 +26,8 @@ It was tested on Debian 12 on Wayfire.
 	and this command to generate the header file:
 	wayland-scanner client-header < xdg-shell.xml > xdg-shell-client-protocol.h
 
-	wlr-layer-shell-unstable-v1-protocol.h
+wlr-layer-shell-unstable-v1-protocol.h
+
 	get the XML from here:
 	https://raw.githubusercontent.com/swaywm/wlroots/b7dc4f2990d1e6cdba38a7e9d2d286e48dd1a3eb/protocol/wlr-layer-shell-unstable-v1.xml
 	after downloading the file run this command to generate the glue code:
@@ -33,9 +35,10 @@ It was tested on Debian 12 on Wayfire.
 	and this command to generate the header file:
 	wayland-scanner client-header < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell-unstable-v1-protocol.h
 
-	wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
+wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
+
 	get the XML file from here:
-	https://raw.githubusercontent.com/swaywm/wlr-protocols/master/unstable/wlr-foreign-toplevel-management-unstable-v1.xml	after downloading the file run this command to generate the glue code:
+	https://raw.githubusercontent.com/swaywm/wlr-protocols/master/unstable/wlr-foreign-toplevel-management-unstable-v1.xml	after downloading the file run this command to 		generate the glue code:
 	wayland-scanner private-code < wlr-foreign-toplevel-management-unstable-v1.xml > wlr-foreign-toplevel-management-unstable-v1.c
 	and this command to generate the header file:
 	wayland-scanner client-header < wlr-foreign-toplevel-management-unstable-v1.xml > wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
@@ -43,17 +46,19 @@ It was tested on Debian 12 on Wayfire.
 	after generating all those *.c and *.h files, and installing all the required libs,
 	move them to the src/ directory
 
-	also you need to install the following libs:
-		make
-		pkgconf
-		librsvg2-dev
-		libcairo2-dev
-		libwayland-dev
+also you need to install the following libs:
 
-	on Debian run the following command:
-		sudo apt install libwayland-dev libcairo2-dev librsvg2-dev make
+	make
+	pkgconf
+ 	librsvg2-dev
+	libcairo2-dev
+	libwayland-dev
 
-	after going through all the above steps, go to the next step in this tutorial.
+on Debian run the following command:
+
+	sudo apt install libwayland-dev libcairo2-dev librsvg2-dev make
+
+after going through all the above steps, go to the next step in this tutorial.
 
 # Installation/Usage
   1. Open a terminal and run:
