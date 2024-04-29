@@ -96,6 +96,8 @@ The application creates the following configuration file
 
    cut_string_workaround is either true or false, it cuts the long multibyte strings, if it breaks the app then set it to false.
 
+   any change in the configuration file requires application restart, right click on the button will close the application after that launch it again.
+
 # Screenshots
  
 ![Alt text](https://raw.githubusercontent.com/DiogenesN/diowwindowlist/main/diowwindowlist.png)
