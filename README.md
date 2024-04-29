@@ -87,5 +87,7 @@ That's it!
 # Support
 
    My Libera IRC support channel: #linuxfriends
+
    Matrix: https://matrix.to/#/#linuxfriends2:matrix.org
+
    Email: nicolas.dio@protonmail.com
