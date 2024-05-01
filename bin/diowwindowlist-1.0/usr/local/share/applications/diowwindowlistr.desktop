@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=DioWWindowList
-Type=Application
-Categories=Utility;
-Exec=/usr/local/bin/diowwindowlist
-Keywords=panel;window;list
