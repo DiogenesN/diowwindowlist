@@ -19,7 +19,7 @@
 #include "getstrfromsubstrinfile.h"
 #include <librsvg-2.0/librsvg/rsvg.h>
 #include "xdg-shell-client-protocol.h"
-#include "wlr-layer-shell-unstable-v1-client-protocol.h"
+#include "wlr-layer-shell-unstable-v1-protocol.h"
 #include "wlr-foreign-toplevel-management-unstable-v1-client-protocol.h"
 
 char *config = NULL;
@@ -265,7 +265,7 @@ static void wl_pointer_axis_discrete(void *data, struct wl_pointer *wl_pointer,
 }
 
 static void initial_popup_open(struct client_state *state) {
-	xdg_surface_set_window_geometry(state->xdg_surface, state->x_popup, state->y_popup,
+	xdg_surface_set_window_geometry(state->xdg_surface, state->x_popup, 30,
 														state->width_popup, state->height_popup);
 	wl_surface_commit(state->wl_surface_popup);
 }
@@ -278,7 +278,7 @@ static void show_popup(struct client_state *state) {
 	wl_surface_commit(state->wl_surface_popup);
 	xdg_surface_add_listener(state->xdg_surface, &xdg_surface_listener, state);
 	xdg_toplevel_set_app_id(state->xdg_toplevel, "org.Diogenes.diowwindowlist");
-	xdg_surface_set_window_geometry(state->xdg_surface, state->x_popup, state->y_popup,
+	xdg_surface_set_window_geometry(state->xdg_surface, state->x_popup, 30,
 																	state->width_popup,
 																	state->height_popup);
 	wl_surface_commit(state->wl_surface_popup);
@@ -435,27 +435,6 @@ static void wl_pointer_frame(void *data, struct wl_pointer *wl_pointer) {
 				fprintf(stderr, "No windows currently opened\n");
 			}
 			else {
-				/// position popup automatically
-				if (state->height_popup >= 20 && state->height_popup < 160) {
-					state->y_popup = get_int_value_from_conf(config, "posy");
-					state->y_popup = ((state->y_popup - state->height_popup) - \
-							(3 - ((state->height_popup + 40) / 3) + (state->height_popup * 1.1)));
-				}
-				else if (state->height_popup >= 160 && state->height_popup < 200) {
-					state->y_popup = get_int_value_from_conf(config, "posy");
-					state->y_popup = ((state->y_popup - state->height_popup) - \
-						(10 - ((state->height_popup + 40) / 3) + (state->height_popup * 1.1)));
-				}
-				else if (state->height_popup >= 200 && state->height_popup < 400) {
-					state->y_popup = get_int_value_from_conf(config, "posy");
-					state->y_popup = ((state->y_popup - state->height_popup) - \
-						(10 - ((state->height_popup + 40) / 3) + (state->height_popup * 1.1)));
-				}
-				else {
-					state->y_popup = get_int_value_from_conf(config, "posy");
-					state->y_popup = ((state->y_popup - state->height_popup) - \
-						(-100 - ((state->height_popup + 40) / 3) + (state->height_popup * 1.2)));
-				}
 				/// opens popup the first time
 				initial_popup_open(state);
 			}
