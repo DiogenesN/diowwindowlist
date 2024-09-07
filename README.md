@@ -3,7 +3,7 @@
 # DioWWindowList
 A Wayland application that shows a list of currently opened windows. It was written without any GUI toolkits, using only libwayland. Many things like: popup position, color, font, text size, highlight color were hardcoded, since i wrote it primarily for myself, if you like it and you want some changes then feel free to add any changes you want or email me. On opening the application, you will see a small button on the top right edge of the screen. Clicking on it, a popup window shows up with a list of all currently opened windows.
 Clicking on any window title will activate (raise) the selected window. You can also browse the windows by mouse wheel scrolling on the top right button. You can minimize a window if you click on the title twice in a row. Right click on the button, terminates the applicatoin.
-It was tested on Debian 12 on Wayfire.
+It was tested on Debian 12 on Woodland and Wayfire.
 
 # What you can do with DioWWindowList
    1. Shows you a list of opened windows.
